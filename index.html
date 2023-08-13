@@ -23,5 +23,37 @@
             </div>
         </div>
     </div>
+    <script>
+        (function() {
+            emailjs.init("AfVqtxHq0gSsLr_ky"); //please encrypted user id for malicious attacks
+          })();
+        //set the parameter as per you template parameter[https://dashboard.emailjs.com/templates]
+          function sendEmail(email, messager) {
+            var templateParams = {
+                to_name: 'eitantravels25@gmail.com',
+                from_name: email,
+                message: messager
+            };
+            emailjs.send('service_h7lbd8h', 'template_p7c9d7k', templateParams, 'AfVqtxHq0gSsLr_ky')
+            .then(function(response) {
+              console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+              console.log('FAILED...', error);
+            });
+          }
+    
+          var name_2 = document.getElementById("name");
+          var email_2 = document.getElementById("email");
+          var changes_2 = document.getElementById("changes");
+          var submit = document.getElementById("submit"); 
+          submit.addEventListener("click", () => {
+            if (email_2.value != "" && changes_2.value != "") {
+                sendEmail(email_2.value, changes_2.value)
+                name_2.value = "";
+                email_2.value = "";
+                changes_2.value = "";
+            }
+          })
+    </script>
 </body>
 </html>
